@@ -1,6 +1,6 @@
 {
   "name": "haunted-styles",
-  "version": "4.4.0",
+  "version": "0.0.1",
   "description": "Haunted Styles Hook for Haunted",
   "main": "index.js",
   "module": "index.js",
