@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<p>The backgrond color will change when A > B. Only a change in `count` (A) will update the stylesheet, add `other` (B) to `useStyles` to always update.</p>
+<my-counter></my-counter>
+
+<script type="module">
+  import { css, unsafeCSS } from "https://unpkg.com/lit-element/lib/css-tag.js";
+  import { component, useState, html } from "https://unpkg.com/haunted/haunted.js";
+  import { useStyles } from "../haunted-styles.js";
+
+  function Counter() {
+    const [count, setCount] = useState(0);
+    const [other, setOther] = useState(10);
+
+    useStyles(
+      () => css`
+        :host {
+          display: inline-flex;
+          align-items: middle;
+        }
+        .box {
+          align-items: middle;
+          justify-content: space-between;
+          display: flex;
+          flex-flow: column;
+          width: 6rem;
+          height: 6rem;
+          margin: 0.4rem;
+          border-radius: 0.4rem;
+          background: ${unsafeCSS(count > other ? "green" : "red")};
+        }
+        .label {
+          background: gray;
+          color: white;
+          text-align: center;
+          padding: 0.1rem;
+          border-radius: 0.4rem 0.4rem 0 0;
+        }
+        .number {
+          text-align: center;
+        }
+      `,
+      [count] // Only the change in `count` will update the stylesheet, add `other` to update always
+    );
+
+    return html`
+      <div class="box">
+        <div class="label">A</div>
+        <div class="number">${count}</div>
+        <button type="button" @click=${() => setCount(count + 1)}>
+          +
+        </button>
+      </div>
+      <div class="box">
+        <div class="label">B</div>
+        <div class="number">${other}</div>
+        <button type="button" @click=${() => setOther(other - 1)}>
+          -
+        </button>
+      </div>
+    `;
+  }
+
+  customElements.define("my-counter", component(Counter));
+</script>

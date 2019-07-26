@@ -1,0 +1,39 @@
+{
+  "name": "haunted-styles",
+  "version": "4.4.0",
+  "description": "Haunted Styles Hook for Haunted",
+  "main": "index.js",
+  "module": "index.js",
+  "type": "module",
+  "scripts": {
+    "build": "make",
+    "preversion": "make",
+    "testee": "testee --browsers chrome test/test.html --config=testee.json",
+    "test": "npm run build && npm run testee"
+  },
+  "files": [
+    "haunted-styles.js",
+    "index.js",
+    "web.js",
+    "index.d.ts"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bvkimball/haunted-styles.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/bvkimball/haunted-styles/issues"
+  },
+  "homepage": "https://github.com/bvkimball/haunted-styles#readme",
+  "typings": "index.d.ts",
+  "devDependencies": {
+    "@matthewp/compile": "^1.3.1",
+    "testee": "^0.8.1"
+  },
+  "dependencies": {
+    "haunted": "^4.5.1"
+  }
+}
